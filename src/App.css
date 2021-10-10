@@ -27,15 +27,6 @@ input[type="text"] {
   color: black;
 }
 
-input[type="text"]:hover {
-  border: 2px solid green;
-  width: 700px;
-  height: 38px;
-  padding: 18px;
-  font-size: 25px;
-  color: black;
-}
-
 input[type="text"]:focus-visible {
   outline: none;
 }
@@ -60,6 +51,13 @@ button:hover {
 }
 
 div .output {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
   margin-top: 50px;
   font-size: 25px;
+}
+
+.show-data {
+  margin-bottom: 25px;
 }

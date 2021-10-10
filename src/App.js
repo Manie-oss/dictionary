@@ -31,13 +31,12 @@ function App(){
       </div>
       {data && 
       (<div className = "output"> 
-        <div><span style = {{color: "green"}}>Word: </span>{word}
+        <div className = "show-data"><span style = {{color: "green"}}>Word: </span>{word}
           <button style = {{ marginLeft: "100px"}} onClick = { pronounceWord }><FcSpeaker size="23px" style = {{color: "green"}}/></button>
         </div>
-        <hr />
-        <div><span style = {{color: "green"}}>Part of speech: </span>{data[0].meanings[0].partOfSpeech}</div>
-        <div><span style = {{color: "green"}}>Meaning: </span>{data[0].meanings[0].definitions[0].definition}</div>
-        <div><span style = {{color: "green"}}>Example: </span>{data[0].meanings[0].definitions[0].example}</div>
+        <div className = "show-data"><span style = {{color: "green"}}>Part of speech: </span>{data[0].meanings[0].partOfSpeech}</div>
+        <div className = "show-data"><span style = {{color: "green"}}>Meaning: </span>{data[0].meanings[0].definitions[0].definition}</div>
+        <div className = "show-data"><span style = {{color: "green"}}>Example: </span>{data[0].meanings[0].definitions[0].example}</div>
       </div>)}
       
     </div>
