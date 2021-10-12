@@ -8,15 +8,17 @@ function App(){
 
   const [word, setWord] = useState('');
   const [previousWord, setPreviousWord] = useState('');
-  const [data, setData] = useState('')
+  const [data, setData] = useState({});
 
   function searchWord(){
-    setPreviousWord(word);
     Axios.get(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
     .then((response) => {
       setData(response.data);
-      console.log(response.data);
-    });
+      setPreviousWord(word);
+    })
+    .catch((error) => {
+      setData({});
+  });
   }
 
   function pronounceWord(){
@@ -31,7 +33,7 @@ function App(){
         <input type = "text" placeholder = "Search" onChange = {(e) => {setWord(e.target.value)}} />
         <button className = "button" onClick = { searchWord }><FaSearch size="23px" /></button>
       </div>
-      {data && (word !== '' && word === previousWord  &&
+      {data !== {} && word !== '' && word === previousWord  &&
       (<div className = "output"> 
         <div className = "show-data"><span style = {{color: "green"}}>Word: </span>{word}
           <button style = {{ marginLeft: "100px"}} onClick = { pronounceWord }><FcSpeaker size="23px" style = {{color: "green"}}/></button>
@@ -39,8 +41,7 @@ function App(){
           <div className = "show-data"><span style = {{color: "green"}}>Part of speech: </span>{data[0].meanings[0].partOfSpeech}</div>
           <div className = "show-data"><span style = {{color: "green"}}>Meaning: </span>{data[0].meanings[0].definitions[0].definition}</div>
           <div className = "show-data"><span style = {{color: "green"}}>Example: </span>{data[0].meanings[0].definitions[0].example}</div>
-      </div>))}
-      
+      </div>)}
     </div>
   )
 };
